@@ -21,12 +21,15 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## 🗺️ Key Documentation References
 
+### Project Overview
+- **README**: `/README.md` 📖 - Project overview and quick start guide
+- **Implementation Goal**: `/Implementgoal.md` 🎯 - Original specification
+
 ### Planning & Architecture
 - **Project Index**: `/PROJECT_INDEX.md` 📑 - Complete file map
 - **Master Todo List**: `/planning/MASTER_TODO.md` ✅ - Task tracking
 - **Phase Roadmap**: `/planning/PHASE_ROADMAP.md` 🗺️ - Implementation phases
 - **Architecture Decisions**: `/planning/ARCHITECTURE_DECISIONS.md` 🏛️ - Key choices
-- **Implementation Goal**: `/Implementgoal.md` 🎯 - Original specification
 
 ### Phase 1 - Pseudocode (Complete)
 - **System Pseudocode**: `/Phase1_Pseudocode/design/SYSTEM_PSEUDOCODE.md` 🔧 - Core logic
@@ -149,6 +152,16 @@ cat planning/PHASE_ROADMAP.md
   - Mandates updating all previous documentation to prevent future issues
   - Creates systematic approach for retroactive fixes
   - Example: Missing relations between Goals↔Actions and Subjects↔Sessions discovered in Phase 3
+- **Added Git and GitHub Operations rule set** (git-1 through git-10)
+  - Provides fallback strategies for SSH authentication issues
+  - Documents GitHub CLI token authentication method for push operations
+  - Ensures proper repository creation and remote management
+  - Example: Used gh auth token method when deploy key authentication failed
+- **Added README Maintenance rule set** (readme-1 through readme-10)
+  - Ensures README.md stays current with project status
+  - Mandates updates for phase completions and new features
+  - Maintains accuracy of quick start guides and troubleshooting
+  - Validates internal links and project structure documentation
 
 ---
 
@@ -299,6 +312,32 @@ cat planning/PHASE_ROADMAP.md
     <rule id="compat-8" priority="critical">When relations or dependencies are discovered between phases, update both phases' documentation</rule>
     <rule id="compat-9" priority="mandatory">Create a "Lessons Learned" section in relevant documents to prevent similar oversights</rule>
     <rule id="compat-10" priority="critical">Always test the fix with fresh implementation to ensure it resolves the issue</rule>
+  </rule-set>
+
+  <rule-set name="Git and GitHub Operations">
+    <rule id="git-1" priority="critical">When pushing to GitHub fails with SSH authentication errors, use GitHub CLI with token authentication as fallback</rule>
+    <rule id="git-2" priority="mandatory">For SSH key issues, first test connection with: ssh -T git@github.com</rule>
+    <rule id="git-3" priority="critical">If deploy key errors occur, use: gh auth token | git push https://oauth2:$(gh auth token)@github.com/owner/repo.git branch</rule>
+    <rule id="git-4" priority="mandatory">Always create repositories using gh CLI when available: gh repo create name --public --source=. --remote=origin</rule>
+    <rule id="git-5" priority="normal">Set git identity locally if global config not available: git config user.email and git config user.name</rule>
+    <rule id="git-6" priority="critical">Never store credentials in code or commits - use environment variables or secure authentication methods</rule>
+    <rule id="git-7" priority="mandatory">Always check git status before committing to ensure correct files are staged</rule>
+    <rule id="git-8" priority="critical">Use descriptive commit messages following project conventions with Co-Authored-By attribution</rule>
+    <rule id="git-9" priority="mandatory">When remote already exists, remove it first: git remote remove origin before adding new remote</rule>
+    <rule id="git-10" priority="normal">Document any Git/GitHub setup issues and solutions in project documentation for future reference</rule>
+  </rule-set>
+
+  <rule-set name="README Maintenance">
+    <rule id="readme-1" priority="critical">Update README.md whenever completing a major phase or milestone</rule>
+    <rule id="readme-2" priority="critical">Keep "Current Status" section accurate with phase progress and completion percentages</rule>
+    <rule id="readme-3" priority="mandatory">Update "Known Limitations" when discovering new Notion constraints or workarounds</rule>
+    <rule id="readme-4" priority="critical">Ensure "Quick Start" instructions remain accurate and tested with each major change</rule>
+    <rule id="readme-5" priority="mandatory">Update "Project Structure" when adding new directories or reorganizing files</rule>
+    <rule id="readme-6" priority="critical">Keep "Database Overview" synchronized with actual implementation status</rule>
+    <rule id="readme-7" priority="mandatory">Add new features to "Key Features" section when implementing significant functionality</rule>
+    <rule id="readme-8" priority="normal">Update version badges and status indicators to reflect current state</rule>
+    <rule id="readme-9" priority="critical">Ensure all internal links in README remain valid after file moves or renames</rule>
+    <rule id="readme-10" priority="mandatory">Add troubleshooting items when users report common issues</rule>
   </rule-set>
 </master-rules>
 

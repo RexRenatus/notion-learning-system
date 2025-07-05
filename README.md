@@ -232,10 +232,6 @@ We welcome contributions! Please:
 - Review [Formula Limitations](./Phase3_Automation/NOTION_FORMULA_LIMITATIONS.md)
 - Open an issue on GitHub
 
-## 📜 License
-
-This project is licensed under the MIT License - see the [LICENSE](./LICENSE) file for details.
-
 ## 🙏 Acknowledgments
 
 - Notion team for the amazing platform
@@ -249,7 +245,16 @@ This project is licensed under the MIT License - see the [LICENSE](./LICENSE) fi
 
 ---
 
+## 📄 License
+
+This project is open source and available under the [MIT License](./LICENSE).
+
+> *"In the beginning, a thought begat a question,  
+> a question begat an idea,  
+> an idea begat a theory,  
+> and the theory begat the obsession"*
+
 <p align="center">
-  Built with ❤️ for lifelong learners<br>
-  <em>Transform your learning journey today!</em>
+  <br>
+  Built with 💜 in the pursuit of infinite knowledge
 </p>
